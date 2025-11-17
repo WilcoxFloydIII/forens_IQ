@@ -83,7 +83,6 @@ class _MainShellState extends State<MainShell> {
                   Icons.home_filled,
                   color: AppColors.textPrimary,
                 ),
-                label: '',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
@@ -97,17 +96,14 @@ class _MainShellState extends State<MainShell> {
                   weight: 1000,
                   size: 28,
                 ),
-                label: '',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.dashboard, color: AppColors.textSecondary),
                 activeIcon: Icon(Icons.dashboard, color: AppColors.textPrimary),
-                label: '',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person_rounded),
                 activeIcon: Icon(Icons.person_rounded),
-                label: '',
               ),
             ],
           ),

@@ -34,41 +34,55 @@ class _AddScreenState extends State<AddScreen> {
         child: Icon(Icons.smart_toy_outlined),
       ),
       children: [
-        Row(children: [Text('Upload File', style: AppTextStyles.heading3)]),
-        SizedBox(height: 16),
-        TextFormField(
-          readOnly: true,
-          decoration: InputDecoration(hintText: 'Choose File'),
-          onTap: () {},
+        Expanded(
+          child: ListView(
+            children: [
+              Row(
+                children: [Text('Upload File', style: AppTextStyles.heading3)],
+              ),
+              SizedBox(height: 16),
+              TextFormField(
+                readOnly: true,
+                decoration: InputDecoration(hintText: 'Choose File'),
+                onTap: () {},
+              ),
+              SizedBox(height: 16),
+              analysing
+                  ? Text('Analysing...', style: AppTextStyles.heading5)
+                  : SizedBox.shrink(),
+              analysing ? LinearProgressIndicator() : SizedBox.shrink(),
+              analysing
+                  ? Text('$completion% Complete', style: AppTextStyles.footer)
+                  : SizedBox.shrink(),
+              analysing ? SizedBox(height: 16) : SizedBox.shrink(),
+              Row(
+                children: [
+                  Text('Extracted Metadata', style: AppTextStyles.heading3),
+                ],
+              ),
+              SizedBox(height: 16),
+              AddMetadataRow(title: 'File Name', data: fileName),
+              SizedBox(height: 16),
+              AddMetadataRow(title: 'File Type', data: fileType),
+              SizedBox(height: 16),
+              AddMetadataRow(title: 'File Size', data: '$fileSize MB'),
+              SizedBox(height: 24),
+              Row(
+                children: [Text('Hidden Data', style: AppTextStyles.heading3)],
+              ),
+              SizedBox(height: 16),
+              HiddenDataRow(title: 'Steganography', data: steganography),
+              SizedBox(height: 16),
+              HiddenDataRow(title: 'Embedded Files', data: embeddedFiles),
+              SizedBox(height: 24),
+              Row(
+                children: [Text('Origin Trail', style: AppTextStyles.heading3)],
+              ),
+              SizedBox(height: 16),
+              Row(children: [Expanded(child: Text("No trail found."))]),
+            ],
+          ),
         ),
-        SizedBox(height: 16),
-        analysing
-            ? Text('Analysing...', style: AppTextStyles.heading5)
-            : SizedBox.shrink(),
-        analysing ? LinearProgressIndicator() : SizedBox.shrink(),
-        analysing
-            ? Text('$completion% Complete', style: AppTextStyles.footer)
-            : SizedBox.shrink(),
-        analysing ? SizedBox(height: 16) : SizedBox.shrink(),
-        Row(
-          children: [Text('Extracted Metadata', style: AppTextStyles.heading3)],
-        ),
-        SizedBox(height: 16),
-        AddMetadataRow(title: 'File Name', data: fileName),
-        SizedBox(height: 16),
-        AddMetadataRow(title: 'File Type', data: fileType),
-        SizedBox(height: 16),
-        AddMetadataRow(title: 'File Size', data: '$fileSize MB'),
-        SizedBox(height: 24),
-        Row(children: [Text('Hidden Data', style: AppTextStyles.heading3)]),
-        SizedBox(height: 16),
-        HiddenDataRow(title: 'Steganography', data: steganography),
-        SizedBox(height: 16),
-        HiddenDataRow(title: 'Embedded Files', data: embeddedFiles),
-        SizedBox(height: 24),
-        Row(children: [Text('Origin Trail', style: AppTextStyles.heading3)]),
-        SizedBox(height: 16),
-        Row(children: [Expanded(child: Text("No trail found."))]),
       ],
     );
   }

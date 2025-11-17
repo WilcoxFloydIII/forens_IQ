@@ -19,10 +19,7 @@ FormFieldValidator<String> get emailValidator =>
         _emailRegex.hasMatch(v?.toLowerCase() ?? '') ? null : 'Invalid email';
 
 FormFieldValidator<String> get combinedPasswordValidator =>
-    (v) =>
-        passwordLengthValidator(v) ??
-        passwordCaseValidator(v) ??
-        passwordDigitValidator(v);
+    (v) => passwordLengthValidator(v) ?? passwordCaseValidator(v); //removed 
 
 FormFieldValidator<String> get passwordLengthValidator =>
     (v) => (v?.length ?? 0) >= 8 ? null : 'Must be at least 8 characters';
